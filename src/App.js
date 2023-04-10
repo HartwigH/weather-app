@@ -1,12 +1,18 @@
 import "./style/App.scss";
 import "./style/weather-icons/sass/weather-icons.min.scss";
+import Inputs from "./components/Inputs";
+import CurrentLocale from "./components/CurrentLocale";
+import CurrentWeatherData from "./components/CurrentWeatherData";
+import DailyForecast from "./components/DailyForecast";
 
 function App() {
   return (
     <div className="app">
       <div className="container">
-        <h1 className="title">Hello world!</h1>
-        <i class="wi wi-day-sunny wi-flip-vertical"></i>
+        <Inputs />
+        <CurrentLocale />
+        <CurrentWeatherData />
+        <DailyForecast />
       </div>
     </div>
   );
