@@ -1,5 +1,24 @@
-.App {
-  text-align: center;
+@import "_mixins.scss";
+
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: dodgerblue;
+  padding: 1rem;
+  margin: 0;
+
+  max-width: 100%;
+
+  @include md {
+    max-width: 50%;
+    margin: 2rem 0;
+  }
 }
 
 .title {
