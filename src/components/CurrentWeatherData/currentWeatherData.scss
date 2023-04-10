@@ -1,0 +1,21 @@
+.currentWeatherData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+
+  &--current {
+    text-align: center;
+    color: aqua;
+    font-size: 1.2rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    color: white;
+    font-size: 2rem;
+  }
+}
