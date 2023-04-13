@@ -3,18 +3,49 @@
 .inputs {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 1rem;
+  align-items: center;
 
-  @include sm {
+  @include lg {
     flex-direction: row;
   }
 
   &__container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
+
+    &__form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+
+      &--geo {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        @include lg {
+          width: 70%;
+        }
+      }
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+
+      @include lg {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
 
     &--input {
       font-size: 1.1rem;
@@ -22,6 +53,7 @@
       padding: 0.5rem;
       border: none;
       text-transform: capitalize;
+      width: 70%;
 
       &::placeholder {
         text-transform: lowercase;
@@ -29,6 +61,28 @@
 
       &:focus {
         outline: none;
+      }
+    }
+
+    &--geo {
+      // max-width: 6rem;
+      width: 70%;
+    }
+
+    &--label {
+      width: 30%;
+      color: white;
+      font-size: 1rem;
+      padding: 0.2rem;
+    }
+
+    &--spacer {
+      color: white;
+      font-size: 1rem;
+      padding: 0.5rem 0;
+
+      @include md {
+        padding: 0.5rem;
       }
     }
 
@@ -52,7 +106,7 @@
     align-items: center;
     padding-top: 2rem;
 
-    @include sm {
+    @include lg {
       padding-top: 0;
     }
 
@@ -62,6 +116,12 @@
 
       background-color: inherit;
       border: none;
+
+      &--active {
+        font-weight: bold;
+        text-decoration: underline;
+        text-underline-offset: 0.2rem;
+      }
     }
 
     &--spacer {
