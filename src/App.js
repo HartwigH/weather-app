@@ -51,9 +51,17 @@ function App() {
     }
   }, [query, units]);
 
+  const setBackgroundColor = () => {
+    if (!weather) return "cold";
+    const threshold = units === "metric" ? 20 : 60;
+    if (weather.temp <= threshold) return "cold";
+
+    return "warm";
+  };
+
   return (
     <div className="app">
-      <div className="container">
+      <div className={`container ${setBackgroundColor()}`}>
         <Inputs
           setQuery={setQuery}
           units={units}
