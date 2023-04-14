@@ -3,7 +3,7 @@ import "./inputs.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-function Inputs({ setQuery, units, setUnits }) {
+function Inputs({ setQuery, units, setUnits, setStatus }) {
   const [city, setCity] = useState("");
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
@@ -15,6 +15,7 @@ function Inputs({ setQuery, units, setUnits }) {
 
   const handleLocationClick = () => {
     if (navigator.geolocation) {
+      setStatus("Loading...");
       navigator.geolocation.getCurrentPosition((position) => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;

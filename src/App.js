@@ -12,6 +12,7 @@ function App() {
   const [query, setQuery] = useState();
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
+  const [status, setStatus] = useState("Loading...");
 
   useEffect(() => {
     if (query) {
@@ -34,10 +35,16 @@ function App() {
 
   useEffect(() => {
     if (query) {
+      setStatus("Loading...");
       const fetchWeather = async () => {
-        await getFormattedWeatherData({ ...query, units }).then((data) => {
-          setWeather(data);
-        });
+        try {
+          await getFormattedWeatherData({ ...query, units }).then((data) => {
+            setWeather(data);
+            setStatus("Done");
+          });
+        } catch (error) {
+          setStatus("Error");
+        }
       };
 
       fetchWeather();
@@ -47,15 +54,25 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+        <Inputs
+          setQuery={setQuery}
+          units={units}
+          setUnits={setUnits}
+          setStatus={setStatus}
+        />
 
-        {weather && (
+        {weather && status === "Done" && (
           <>
             <CurrentLocale weather={weather} />
             <CurrentWeatherData weather={weather} />
             <DailyForecast items={weather.daily} />
           </>
         )}
+
+        <div className="container__feedback">
+          {status === "Loading..." && <p>{status}</p>}
+          {status === "Error" && <p>{status}</p>}
+        </div>
       </div>
     </div>
   );
