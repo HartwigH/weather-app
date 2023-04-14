@@ -1,15 +1,14 @@
 import React from "react";
 import "./currentLocale.scss";
+import { getDate } from "../../services/weatherService";
 
-function CurrentLocale() {
+function CurrentLocale({ weather: { dt, timezone, name, country } }) {
   return (
     <div className="currentLocale">
-      <p className="currentLocale--title">
-        Tuesday, 21 April 2023 | Local time: 15:47
-      </p>
+      <p className="currentLocale--title">{getDate(dt, timezone)}</p>
 
       <div className="currentLocale__data">
-        <p className="currentLocale__data--header">Tallinn, EE</p>
+        <p className="currentLocale__data--header">{`${name}, ${country}`}</p>
       </div>
     </div>
   );
